@@ -1,0 +1,223 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-inter), 'Inter Fallback';
+  --font-sans: var(--font-inter), 'Inter Fallback';
+  --font-mono: var(--font-inter), 'Inter Fallback';
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-urgency: var(--urgency);
+  --color-urgency-foreground: var(--urgency-foreground);
+  --color-green-deep: var(--green-deep);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f4fbf1;
+  --foreground: #1c2b22;
+  --card: #ffffff;
+  --card-foreground: #1c2b22;
+  --popover: #ffffff;
+  --popover-foreground: #1c2b22;
+  --primary: #22c55e;
+  --primary-foreground: #ffffff;
+  --green-deep: #15803d;
+  --secondary: #eafbe9;
+  --secondary-foreground: #15803d;
+  --muted: #eef6ec;
+  --muted-foreground: #6b7c70;
+  --accent: #fef9e7;
+  --accent-foreground: #7a5c0a;
+  --gold: #d4af37;
+  --gold-foreground: #4a3a08;
+  --urgency: #ef4444;
+  --urgency-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #e2efdd;
+  --input: #e2efdd;
+  --ring: #22c55e;
+  --chart-1: #22c55e;
+  --chart-2: #15803d;
+  --chart-3: #d4af37;
+  --chart-4: #86efac;
+  --chart-5: #ef4444;
+  --radius: 1rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1c2b22;
+  --sidebar-primary: #22c55e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eafbe9;
+  --sidebar-accent-foreground: #15803d;
+  --sidebar-border: #e2efdd;
+  --sidebar-ring: #22c55e;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply text-foreground;
+    background: linear-gradient(160deg, #f0fdf4 0%, #f3faec 45%, #fefce8 100%);
+    background-attachment: fixed;
+    min-height: 100dvh;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* ANIMAÇÕES DE GAMIFICAÇÃO                                            */
+/* ------------------------------------------------------------------ */
+
+/* Chama pulsando ao completar ação no dia */
+@keyframes flame-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(212, 175, 55, 0));
+  }
+  50% {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.7));
+  }
+}
+.animate-flame-pulse {
+  animation: flame-pulse 0.9s ease-in-out;
+}
+
+/* Pulso de antecipação em cards quase liberados */
+@keyframes soft-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(212, 175, 55, 0);
+  }
+}
+.animate-soft-pulse {
+  animation: soft-pulse 1.8s ease-in-out infinite;
+}
+
+/* Entrada da celebração */
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-pop-in {
+  animation: pop-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out both;
+}
+
+/* Desbloqueio de conquista (cinza -> colorido + zoom) */
+@keyframes unlock-badge {
+  0% {
+    transform: scale(0.6) rotate(-8deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.12) rotate(3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+.animate-unlock-badge {
+  animation: unlock-badge 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Confete: queda de partículas */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-12vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(112vh) rotate(720deg);
+    opacity: 0.9;
+  }
+}
+.confetti-piece {
+  position: absolute;
+  top: 0;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  will-change: transform;
+  animation: confetti-fall linear forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-flame-pulse,
+  .animate-soft-pulse,
+  .animate-pop-in,
+  .animate-unlock-badge,
+  .confetti-piece {
+    animation: none !important;
+  }
+}
